@@ -1,0 +1,70 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+/*
+#game-container {
+  background-color: blueviolet;
+  background-image: url(https://i.pinimg.com/originals/36/1e/5b/361e5b367517ea40aa1dc79e8e585d4a.png);
+  border-bottom: 50px solid #c4426d;
+  margin: auto;
+  width: 75%;
+  height: 600px;
+  padding: 10px;
+}
+*/
+
+body {
+  padding: 0;
+  text-align: center;
+}
+
+#game-intro {
+  padding: 20px 0px;
+  background-color: black;
+}
+
+#game-container {
+  display: flex;
+  width: 75%;
+  padding: 20px 0px;
+  justify-content: center;
+  margin: auto;
+}
+
+#game-screen {
+  display: none;
+  align-content: center;
+  padding: 20px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url(./images/361e5b367517ea40aa1dc79e8e585d4a.png);
+  height: 30em;
+  animation: slide 2.5s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    background-position: 1000px 0;
+  }
+
+  100% {
+    background-position: 0px 0;
+  }
+}
+
+#game-end {
+  display: none;
+}
+
+button {
+  font-size: 20px;
+  text-align: center;
+  position: relative;
+  /*background-image: url(https://png.pngtree.com/png-clipart/20220530/ourmid/pngtree-start-button-in-pixel-art-style-png-image_4764304.png);*/
+  background-color: darkgoldenrod;
+  height: 2em;
+  width: 7em;
+  color: white;
+}
