@@ -4,24 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Game</title>
-    <link rel ="stylesheet" href="./style.css"
+    <title>Narkes Lepsis</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>My Game</h1>
+    <h1>Parasomnia</h1>
     <div id="game-intro">
       <img src="images/i032d91obzk81.gif" alt="" class="intro-img" />
       <br />
-      <button id="start-button">Dream on!</button>
+      <button id="start-button">Wake up!</button>
     </div>
     <div id="game-container">
+      <div>
+        <h2>Stats</h2>
+        <p>Score: <span id="score">0</span></p>
+        <p>Lives: <span id="lives">3</span></p>
+      </div>
       <div id="game-screen"></div>
     </div>
     <div id="game-over">
+      <img
+        src="../Caros-1st-Game/images/maxresdefault.jpg"
+        alt="game over"
+        class="logo-img"
+      />
+      <h1>Game Over</h1>
+      <br />
       <button id="restart-button">Restart</button>
     </div>
     <script type="text/javascript" src="./script.js"></script>
     <script type="text/javascript" src="./game.js"></script>
     <script type="text/javascript" src="./player.js"></script>
+    <script type="text/javascript" src="./obstacle.js"></script>
   </body>
 </html>

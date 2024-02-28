@@ -7,6 +7,41 @@ window.onload = function () {
     startGame();
   });
 
+  restartButton.addEventListener("click", () => {
+    game.restart(); //cambiar a pantalla de inicio?
+  });
+
+  //keyboard event listeners
+
+  document.addEventListener("keydown", (event) => {
+    console.log(event.code);
+    if (event.code === "ArrowRight") {
+      game.player.directionX = 3;
+    } else if (event.code === "ArrowLeft") {
+      game.player.directionX = -3;
+    }
+
+    //up y down opc
+
+    if (event.code === "ArrowUp") {
+      game.player.directionY = -3;
+    } else if (event.code === "ArrowDown") {
+      game.player.directionY = +3;
+    }
+
+    /*Dash up
+
+    if (event.code === "Space") {
+      game.player.directionX = +10;
+      game.player.directionY = -10;
+    }*/
+  });
+
+  document.addEventListener("keyup", () => {
+    game.player.directionX = 0;
+    game.player.directionY = 0;
+  });
+
   function startGame() {
     console.log("start game");
     game.start();

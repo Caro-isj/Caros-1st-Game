@@ -25,22 +25,21 @@ class Player {
   }
 
   move() {
+    //if (this.left >= 0 && this.left + this.width <= 910) {
     this.left += this.directionX;
     this.top += this.directionY;
     this.updatePosition();
-    console.log("here");
+    // }
   }
 
   updatePosition() {
     this.element.style.top = `${this.top}px`;
-    this.element.style.top = `${this.left}px`;
+    this.element.style.left = `${this.left}px`;
   }
 
   didCollide(obstacle) {
     const playerRect = this.element.getBoundingClientRect();
     const obstacleRect = obstacle.element.getBoundingClientRect();
-
-    //check actual directions for mine
 
     if (
       playerRect.left < obstacleRect.right &&
