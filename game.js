@@ -12,9 +12,9 @@ class Game {
       350,
       100,
       100,
-      "images/mainchar 2.png"
+      "images/69846b63f30796d.png"
     );
-    //this.height = 910;
+    //this.height = 516;
     this.width = 910;
     this.obstacles = [];
     this.score = 0;
@@ -38,12 +38,14 @@ class Game {
   //POR QUE NO REFRESCA SCORE Y LIVES?
 
   restart() {
+    console.log(this.obstacles);
     this.gameisOver = false;
     this.score = 0;
     this.lives = 3;
     this.gameOverScreen.style.display = "none";
     this.gameScreen.style.display = "block";
-    this.obstacles.push(new Obstacle(this.gameScreen));
+    //this.obstacles.push(new Obstacle(this.gameScreen));
+    this.obstacles = [];
     this.start();
   }
 
@@ -56,7 +58,6 @@ class Game {
   }
 
   update() {
-    //adding more enemies after certain frames
     if (this.counter % 200 === 0) {
       this.obstacles.push(new Obstacle(this.gameScreen)); //regresar a array?
     }
@@ -74,8 +75,6 @@ class Game {
         this.score++;
         this.scoreElement.innerText = this.score;
       }
-
-      //collision
 
       if (this.player.didCollide(oneObstacle)) {
         console.log("collision!");

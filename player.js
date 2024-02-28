@@ -25,12 +25,45 @@ class Player {
   }
 
   move() {
-    //if (this.left >= 0 && this.left + this.width <= 910) {
+    /*if (
+      this.left >= 0 &&
+      this.left + this.width <= 910 &&
+      this.top <= 0 &&
+      this.top + this.height >= 516
+    ) {*/
     this.left += this.directionX;
     this.top += this.directionY;
     this.updatePosition();
     // }
   }
+
+  jump() {
+    let maxHeight = 200;
+    let tracker = 0;
+
+    this.jumpTimer = setInterval(() => {
+      if (tracker === maxHeight * 2) {
+        clearInterval(this.jumpTimer);
+      }
+      if (tracker < maxHeight) {
+        // this.left += 7;
+        this.top -= 17;
+      } else {
+        // this.left += 7;
+        this.top += 17;
+      }
+      tracker += 10;
+      console.log(tracker);
+      this.updatePosition();
+    }, 30);
+  }
+
+  /*jump(command) {
+    if (command === "stop-jump") {
+      clearInterval(this.jumpTimer);
+      return;
+    }
+  }*/
 
   updatePosition() {
     this.element.style.top = `${this.top}px`;

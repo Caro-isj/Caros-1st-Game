@@ -21,19 +21,24 @@ window.onload = function () {
       game.player.directionX = -3;
     }
 
-    //up y down opc
-
     if (event.code === "ArrowUp") {
       game.player.directionY = -3;
     } else if (event.code === "ArrowDown") {
       game.player.directionY = +3;
     }
 
-    /*Dash up
-
-    if (event.code === "Space") {
+    if (event.code === "KeyW") {
       game.player.directionX = +10;
       game.player.directionY = -10;
+    } else if (event.code === "KeyS") {
+      game.player.directionX = +10;
+      game.player.directionY = +10;
+    }
+
+    if (event.code === "Space") {
+      game.player.jump();
+    } /*else if (event.code === "Control") {
+      game.player.jump("stop-jump");
     }*/
   });
 
