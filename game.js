@@ -8,21 +8,21 @@ class Game {
 
     this.player = new Player(
       this.gameScreen,
-      70,
-      350,
+      40,
+      390,
       100,
       100,
       "images/69846b63f30796d.png"
     );
-    //this.height = 516;
+    //this.height = 516; xq se vuelve un cuadro cuando agrego height?
     this.width = 910;
-    this.obstacles = [];
+    this.obstacles = [new Obstacle(this.gameScreen)];
     this.score = 0;
     this.lives = 3;
     this.gameisOver = false;
     this.gameIntervalId = 0;
-    this.gameLoopFrequency = Math.round(1000 / 60); //60fps
-    this.counter = 0;
+    this.gameLoopFrequency = Math.round(1000 / 60);
+    //this.counter = 0;
   }
   start() {
     this.gameScreen.style.width = `${this.width}px`;
@@ -31,11 +31,9 @@ class Game {
     this.gameScreen.style.display = "block";
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
-      this.counter++;
+      //this.counter++;
     }, this.gameLoopFrequency);
   }
-
-  //POR QUE NO REFRESCA SCORE Y LIVES?
 
   restart() {
     console.log(this.obstacles);
@@ -45,8 +43,12 @@ class Game {
     this.gameOverScreen.style.display = "none";
     this.gameScreen.style.display = "block";
     //this.obstacles.push(new Obstacle(this.gameScreen));
-    this.obstacles = [];
+    this.obstacles = [new Obstacle(this.gameScreen)];
     this.start();
+    this.livesElement.innerText = this.lives;
+    this.scoreElement.innerText = this.score;
+
+    ///como resetear sitio player?
   }
 
   gameLoop() {
@@ -58,15 +60,15 @@ class Game {
   }
 
   update() {
-    if (this.counter % 200 === 0) {
+    /* if (this.counter % 200 === 0) {
       this.obstacles.push(new Obstacle(this.gameScreen)); //regresar a array?
-    }
+    }*/
 
     this.player.move();
 
     this.obstacles.forEach((oneObstacle, index) => {
       oneObstacle.move();
-      if (oneObstacle.left < -200) {
+      if (oneObstacle.left < -100) {
         console.log("You scored a point");
 
         this.obstacles.splice(index, 1);

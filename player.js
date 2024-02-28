@@ -24,38 +24,43 @@ class Player {
     this.gameScreen.appendChild(this.element);
   }
 
+  //Arreglar trabado en limites
+
   move() {
-    /*if (
-      this.left >= 0 &&
-      this.left + this.width <= 910 &&
-      this.top <= 0 &&
-      this.top + this.height >= 516
-    ) {*/
-    this.left += this.directionX;
-    this.top += this.directionY;
-    this.updatePosition();
-    // }
+    if (this.left >= 0 && this.left + this.width <= 910) {
+      //límites y mov en X
+      this.left += this.directionX;
+      this.updatePosition();
+    }
+
+    if (this.top >= 0 && this.top < 420) {
+      //límites y mov en Y
+      this.top += this.directionY;
+      this.updatePosition();
+    }
   }
 
   jump() {
-    let maxHeight = 200;
-    let tracker = 0;
+    if (this.top >= 0 && this.top < 420) {
+      let maxHeight = 200;
+      let tracker = 0;
 
-    this.jumpTimer = setInterval(() => {
-      if (tracker === maxHeight * 2) {
-        clearInterval(this.jumpTimer);
-      }
-      if (tracker < maxHeight) {
-        // this.left += 7;
-        this.top -= 17;
-      } else {
-        // this.left += 7;
-        this.top += 17;
-      }
-      tracker += 10;
-      console.log(tracker);
-      this.updatePosition();
-    }, 30);
+      this.jumpTimer = setInterval(() => {
+        if (tracker === maxHeight * 2) {
+          clearInterval(this.jumpTimer);
+        }
+        if (tracker < maxHeight) {
+          // this.left += 7;
+          this.top -= 17;
+        } else {
+          // this.left += 7;
+          this.top += 17;
+        }
+        tracker += 10;
+
+        this.updatePosition();
+      }, 30);
+    }
   }
 
   /*jump(command) {

@@ -1,17 +1,17 @@
 class Obstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.enemyPositions = [250, 290];
+    this.enemyPositions = [10, 100, 200, 300, 410];
     this.top =
       this.enemyPositions[
         Math.floor(Math.random() * this.enemyPositions.length)
       ];
-    this.left = 1100;
+    this.left = 1000;
     this.width = 110;
     this.directionX = 0;
     this.directionY = 0;
     this.element = document.createElement("img");
-    this.element.src = "images/enemy 2.png"; //como agrego mas enemigos
+    this.element.src = "images/enemy 2.png"; //agregar mas enemigos
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
@@ -21,7 +21,7 @@ class Obstacle {
   }
 
   move() {
-    this.left -= 12;
+    this.left -= 15;
     this.updatePosition();
   }
 

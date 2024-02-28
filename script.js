@@ -8,7 +8,7 @@ window.onload = function () {
   });
 
   restartButton.addEventListener("click", () => {
-    game.restart(); //cambiar a pantalla de inicio?
+    game.restart();
   });
 
   //keyboard event listeners
@@ -16,15 +16,15 @@ window.onload = function () {
   document.addEventListener("keydown", (event) => {
     console.log(event.code);
     if (event.code === "ArrowRight") {
-      game.player.directionX = 3;
+      game.player.directionX = 6;
     } else if (event.code === "ArrowLeft") {
-      game.player.directionX = -3;
+      game.player.directionX = -6;
     }
 
     if (event.code === "ArrowUp") {
-      game.player.directionY = -3;
+      game.player.directionY = -6;
     } else if (event.code === "ArrowDown") {
-      game.player.directionY = +3;
+      game.player.directionY = +6;
     }
 
     if (event.code === "KeyW") {
