@@ -109,4 +109,22 @@ class Player {
       return false;
     }
   }
+
+  //COFFEE
+
+  didCollide(coffee) {
+    const playerRect = this.element.getBoundingClientRect();
+    const coffeeRect = coffee.element.getBoundingClientRect();
+
+    if (
+      playerRect.left < coffeeRect.right &&
+      playerRect.right > coffeeRect.left &&
+      playerRect.top < coffeeRect.bottom &&
+      playerRect.bottom > coffeeRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

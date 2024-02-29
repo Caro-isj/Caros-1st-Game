@@ -17,6 +17,7 @@ class Game {
     //this.height = 516; **Bugs: Becomes square when adding height**
     this.width = 910;
     this.obstacles = [new Obstacle(this.gameScreen)];
+    this.coffees = [new Coffee(this.gameScreen)];
     this.score = 0;
     this.lives = 3;
     this.gameisOver = false;
@@ -50,6 +51,7 @@ class Game {
     this.gameScreen.style.display = "block";
     // this.obstacles.push(new Obstacle(this.gameScreen));
     this.obstacles = [new Obstacle(this.gameScreen)];
+    this.coffees = [new Coffee(this.gameScreen)];
     this.start();
     this.livesElement.innerText = this.lives; //didnt show the reset score/point without this
     this.scoreElement.innerText = this.score;
@@ -87,8 +89,8 @@ class Game {
         this.obstacles.splice(index, 1);
         oneObstacle.element.remove();
         this.obstacles.push(new Obstacle(this.gameScreen));
-        this.score++;
-        this.scoreElement.innerText = this.score;
+        // this.score++;
+        // this.scoreElement.innerText = this.score;
       }
 
       if (this.player.didCollide(oneObstacle)) {
@@ -100,6 +102,24 @@ class Game {
         if (this.lives === 0) {
           this.gameisOver = true;
         }
+      }
+    });
+
+    this.coffees.forEach((oneCoffee, index) => {
+      oneCoffee.move();
+
+      if (oneCoffee.left < -100) {
+        this.coffees.splice(index, 1);
+        oneCoffee.element.remove();
+        this.coffees.push(new Coffee(this.gameScreen));
+      }
+
+      if (this.player.didCollide(oneCoffee)) {
+        this.coffees.splice(index, 1);
+        oneCoffee.element.remove();
+        this.coffees.push(new Coffee(this.gameScreen));
+        this.score++;
+        this.scoreElement.innerText = this.score;
       }
     });
   }
