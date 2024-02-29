@@ -13,22 +13,22 @@ window.onload = function () {
 
   document.addEventListener("keydown", (event) => {
     console.log(event.code);
-    if (event.code === "ArrowRight") {
+    if (event.code === "KeyD") {
       game.player.directionX = 6;
-    } else if (event.code === "ArrowLeft") {
+    } else if (event.code === "KeyA") {
       game.player.directionX = -6;
     }
 
-    if (event.code === "ArrowUp") {
+    if (event.code === "KeyW") {
       game.player.directionY = -6;
-    } else if (event.code === "ArrowDown") {
+    } else if (event.code === "KeyS") {
       game.player.directionY = +6;
     }
 
-    if (event.code === "KeyW") {
+    if (event.code === "KeyQ") {
       game.player.directionX = +10;
       game.player.directionY = -10;
-    } else if (event.code === "KeyS") {
+    } else if (event.code === "KeyE") {
       game.player.directionX = +10;
       game.player.directionY = +10;
     }
@@ -36,12 +36,10 @@ window.onload = function () {
     if (event.code === "Space") {
       game.player.jump();
     }
-
-    if (event.code === "Control") {
-    }
   });
 
-  // game.player.jump("stop-jump");
+  /* if (event.code === "Control") {
+    game.player.jump("stop-jump");*/
 
   document.addEventListener("keyup", () => {
     game.player.directionX = 0;

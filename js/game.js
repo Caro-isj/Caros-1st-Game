@@ -10,9 +10,9 @@ class Game {
       this.gameScreen,
       40,
       390,
-      100,
-      100,
-      "images/69846b63f30796d.png"
+      120,
+      120,
+      "images/output-onlinegiftools.gif"
     );
     //this.height = 516; **Bugs: Becomes square when adding height**
     this.width = 910;
@@ -22,7 +22,10 @@ class Game {
     this.gameisOver = false;
     this.gameIntervalId = 0;
     this.gameLoopFrequency = Math.round(1000 / 60);
-    //this.counter = 0;
+    this.song = new Audio("images/POL-super-match-short.wav");
+
+    this.song.volume = 0.1;
+    // this.counter = 0;
   }
   start() {
     this.gameScreen.style.width = `${this.width}px`;
@@ -30,9 +33,12 @@ class Game {
     this.startScreen.style.display = "none";
     this.gameScreen.style.display = "block";
 
+    this.song.loop = true;
+    this.song.play();
+
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
-      //this.counter++;
+      //  this.counter++;
     }, this.gameLoopFrequency);
   }
 
@@ -42,11 +48,20 @@ class Game {
     this.lives = 3;
     this.gameOverScreen.style.display = "none";
     this.gameScreen.style.display = "block";
-    //this.obstacles.push(new Obstacle(this.gameScreen));
+    // this.obstacles.push(new Obstacle(this.gameScreen));
     this.obstacles = [new Obstacle(this.gameScreen)];
     this.start();
-    this.livesElement.innerText = this.lives;
+    this.livesElement.innerText = this.lives; //didnt show the reset score/point without this
     this.scoreElement.innerText = this.score;
+    this.player.element.remove();
+    this.player = new Player(
+      this.gameScreen,
+      40,
+      390,
+      120,
+      120,
+      "images/output-onlinegiftools.gif"
+    );
 
     //**Bugs: doesn't reset player initial position**
   }
@@ -62,15 +77,13 @@ class Game {
   update() {
     this.player.move();
 
-    /* if (this.counter % 300 === 0) {
-      this.obstacles.push(new Obstacle(this.gameScreen)); 
+    /*if (this.counter % 300 === 0) {
+      this.obstacles.push(new Obstacle(this.gameScreen));
     }*/
 
     this.obstacles.forEach((oneObstacle, index) => {
       oneObstacle.move();
       if (oneObstacle.left < -100) {
-        console.log("You scored a point");
-
         this.obstacles.splice(index, 1);
         oneObstacle.element.remove();
         this.obstacles.push(new Obstacle(this.gameScreen));
@@ -92,6 +105,7 @@ class Game {
   }
 
   gameOver() {
+    this.song.pause();
     this.gameScreen.style.display = "none";
     this.gameOverScreen.style.display = "block";
   }
