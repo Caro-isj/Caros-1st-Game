@@ -24,20 +24,24 @@ class Player {
     this.gameScreen.appendChild(this.element);
   }
 
-  //Arreglar trabado en limites
-
   move() {
-    if (this.left >= 0 && this.left + this.width <= 910) {
-      //límites y mov en X
-      this.left += this.directionX;
-      this.updatePosition();
+    this.left += this.directionX;
+    this.top += this.directionY;
+
+    if (this.left < 10) {
+      this.left = 10;
+    }
+    if (this.top < 10) {
+      this.top = 10;
+    }
+    if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
+      this.left = this.gameScreen.offsetWidth - this.width - 10;
+    }
+    if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
+      this.top = this.gameScreen.offsetHeight - this.height - 10;
     }
 
-    if (this.top >= 0 && this.top < 420) {
-      //límites y mov en Y
-      this.top += this.directionY;
-      this.updatePosition();
-    }
+    this.updatePosition();
   }
 
   jump() {
@@ -57,9 +61,24 @@ class Player {
           this.top += 17;
         }
         tracker += 10;
-
-        this.updatePosition();
       }, 30);
+
+      //**bug: stuck at limits when jump pressed and lowers a few pixels when comes down**
+
+      if (this.left < 10) {
+        this.left = 10;
+      }
+      if (this.top < 10) {
+        this.top = 10;
+      }
+      if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
+        this.left = this.gameScreen.offsetWidth - this.width - 10;
+      }
+      if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
+        this.top = this.gameScreen.offsetHeight - this.height - 10;
+      }
+
+      this.updatePosition();
     }
   }
 

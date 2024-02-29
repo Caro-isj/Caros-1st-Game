@@ -14,7 +14,7 @@ class Game {
       100,
       "images/69846b63f30796d.png"
     );
-    //this.height = 516; xq se vuelve un cuadro cuando agrego height?
+    //this.height = 516; **Bugs: Becomes square when adding height**
     this.width = 910;
     this.obstacles = [new Obstacle(this.gameScreen)];
     this.score = 0;
@@ -29,6 +29,7 @@ class Game {
     this.gameScreen.style.width = `${this.height}px`;
     this.startScreen.style.display = "none";
     this.gameScreen.style.display = "block";
+
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
       //this.counter++;
@@ -36,7 +37,6 @@ class Game {
   }
 
   restart() {
-    console.log(this.obstacles);
     this.gameisOver = false;
     this.score = 0;
     this.lives = 3;
@@ -48,7 +48,7 @@ class Game {
     this.livesElement.innerText = this.lives;
     this.scoreElement.innerText = this.score;
 
-    ///como resetear sitio player?
+    //**Bugs: doesn't reset player initial position**
   }
 
   gameLoop() {
@@ -60,11 +60,11 @@ class Game {
   }
 
   update() {
-    /* if (this.counter % 200 === 0) {
-      this.obstacles.push(new Obstacle(this.gameScreen)); //regresar a array?
-    }*/
-
     this.player.move();
+
+    /* if (this.counter % 300 === 0) {
+      this.obstacles.push(new Obstacle(this.gameScreen)); 
+    }*/
 
     this.obstacles.forEach((oneObstacle, index) => {
       oneObstacle.move();
@@ -79,7 +79,6 @@ class Game {
       }
 
       if (this.player.didCollide(oneObstacle)) {
-        console.log("collision!");
         this.obstacles.splice(index, 1);
         oneObstacle.element.remove();
         this.obstacles.push(new Obstacle(this.gameScreen));
@@ -93,7 +92,6 @@ class Game {
   }
 
   gameOver() {
-    console.log("you've fallen into eternal slumber");
     this.gameScreen.style.display = "none";
     this.gameOverScreen.style.display = "block";
   }

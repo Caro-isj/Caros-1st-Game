@@ -11,8 +11,6 @@ window.onload = function () {
     game.restart();
   });
 
-  //keyboard event listeners
-
   document.addEventListener("keydown", (event) => {
     console.log(event.code);
     if (event.code === "ArrowRight") {
@@ -37,10 +35,13 @@ window.onload = function () {
 
     if (event.code === "Space") {
       game.player.jump();
-    } /*else if (event.code === "Control") {
-      game.player.jump("stop-jump");
-    }*/
+    }
+
+    if (event.code === "Control") {
+    }
   });
+
+  // game.player.jump("stop-jump");
 
   document.addEventListener("keyup", () => {
     game.player.directionX = 0;
