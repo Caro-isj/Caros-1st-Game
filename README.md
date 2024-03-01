@@ -22,7 +22,6 @@ Comparing current score with the highest one, adding more enemies, changing scen
 
 Classes:
 
-- Script
 - Game
 - Player
 - Obstacles
