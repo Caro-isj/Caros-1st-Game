@@ -1,6 +1,6 @@
 # Parasomnia
 
-[Click here to see deployed game](https://caro-isj.github.io/Caros-1st-Game/)
+[Click here to see deployed game](https://caro-isj.github.io/Parasomnia/)
 
 ## Description
 
