@@ -1,6 +1,6 @@
-# Project's name
+# Parasomnia
 
-[Click here to see deployed game](http://github.com)
+[Click here to see deployed game](https://caro-isj.github.io/Caros-1st-Game/)
 
 ## Description
 
