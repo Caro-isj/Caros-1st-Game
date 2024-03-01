@@ -14,7 +14,7 @@ class Game {
       120,
       "images/output-onlinegiftools.gif"
     );
-    //this.height = 516; **Bugs: Becomes square when adding height**
+
     this.width = 910;
     this.obstacles = [new Obstacle(this.gameScreen)];
     this.coffees = [new Coffee(this.gameScreen)];
@@ -23,10 +23,12 @@ class Game {
     this.gameisOver = false;
     this.gameIntervalId = 0;
     this.gameLoopFrequency = Math.round(1000 / 60);
-    this.song = new Audio("images/POL-super-match-short.wav");
-
-    this.song.volume = 0.1;
-    // this.counter = 0;
+    this.playingSong = new Audio("sounds/POL-super-match-short.wav");
+    this.dyingTune = new Audio("sounds/POL-spirits-dance-short.wav");
+    this.coffeeSound = new Audio("sounds/sfx_coin_cluster3.wav");
+    this.enemySound = new Audio("sounds/sfx_exp_short_hard1.wav");
+    this.playingSong.volume = 0.08;
+    this.dyingTune.volume = 0.08;
   }
   start() {
     this.gameScreen.style.width = `${this.width}px`;
@@ -34,26 +36,25 @@ class Game {
     this.startScreen.style.display = "none";
     this.gameScreen.style.display = "block";
 
-    this.song.loop = true;
-    this.song.play();
+    this.playingSong.loop = true;
+    this.playingSong.play();
 
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
-      //  this.counter++;
     }, this.gameLoopFrequency);
   }
 
   restart() {
+    this.dyingTune.pause();
     this.gameisOver = false;
     this.score = 0;
     this.lives = 3;
     this.gameOverScreen.style.display = "none";
     this.gameScreen.style.display = "block";
-    // this.obstacles.push(new Obstacle(this.gameScreen));
     this.obstacles = [new Obstacle(this.gameScreen)];
     this.coffees = [new Coffee(this.gameScreen)];
     this.start();
-    this.livesElement.innerText = this.lives; //didnt show the reset score/point without this
+    this.livesElement.innerText = this.lives;
     this.scoreElement.innerText = this.score;
     this.player.element.remove();
     this.player = new Player(
@@ -64,8 +65,6 @@ class Game {
       120,
       "images/output-onlinegiftools.gif"
     );
-
-    //**Bugs: doesn't reset player initial position**
   }
 
   gameLoop() {
@@ -79,21 +78,17 @@ class Game {
   update() {
     this.player.move();
 
-    /*if (this.counter % 300 === 0) {
-      this.obstacles.push(new Obstacle(this.gameScreen));
-    }*/
-
     this.obstacles.forEach((oneObstacle, index) => {
       oneObstacle.move();
+
       if (oneObstacle.left < -100) {
         this.obstacles.splice(index, 1);
         oneObstacle.element.remove();
         this.obstacles.push(new Obstacle(this.gameScreen));
-        // this.score++;
-        // this.scoreElement.innerText = this.score;
       }
 
       if (this.player.didCollide(oneObstacle)) {
+        this.enemySound.play();
         this.obstacles.splice(index, 1);
         oneObstacle.element.remove();
         this.obstacles.push(new Obstacle(this.gameScreen));
@@ -115,6 +110,7 @@ class Game {
       }
 
       if (this.player.didCollide(oneCoffee)) {
+        this.coffeeSound.play();
         this.coffees.splice(index, 1);
         oneCoffee.element.remove();
         this.coffees.push(new Coffee(this.gameScreen));
@@ -125,7 +121,12 @@ class Game {
   }
 
   gameOver() {
-    this.song.pause();
+    this.dyingTune.play();
+    this.coffees.forEach((oneCoffee) => oneCoffee.element.remove());
+    this.coffees = [];
+    this.obstacles.forEach((oneObstacle) => oneObstacle.element.remove());
+    this.obstacles = [];
+    this.playingSong.pause();
     this.gameScreen.style.display = "none";
     this.gameOverScreen.style.display = "block";
   }

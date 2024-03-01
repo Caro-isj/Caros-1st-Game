@@ -22,6 +22,7 @@ class Player {
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
     this.gameScreen.appendChild(this.element);
+    //this.jump = false;
   }
 
   move() {
@@ -45,6 +46,9 @@ class Player {
   }
 
   jump() {
+    this.left += this.directionX;
+    this.top += this.directionY;
+
     if (this.top >= 0 && this.top < 420) {
       let maxHeight = 200;
       let tracker = 0;
@@ -54,40 +58,18 @@ class Player {
           clearInterval(this.jumpTimer);
         }
         if (tracker < maxHeight) {
-          // this.left += 7;
           this.top -= 17;
         } else {
-          // this.left += 7;
           this.top += 17;
         }
         tracker += 10;
       }, 30);
 
-      //**bug: stuck at limits when jump pressed and lowers a few pixels when comes down**
-
-      if (this.left < 10) {
-        this.left = 10;
-      }
-      if (this.top < 10) {
-        this.top = 10;
-      }
-      if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
-        this.left = this.gameScreen.offsetWidth - this.width - 10;
-      }
-      if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
-        this.top = this.gameScreen.offsetHeight - this.height - 10;
-      }
+      this.move();
 
       this.updatePosition();
     }
   }
-
-  /*jump(command) {
-    if (command === "stop-jump") {
-      clearInterval(this.jumpTimer);
-      return;
-    }
-  }*/
 
   updatePosition() {
     this.element.style.top = `${this.top}px`;
@@ -109,8 +91,6 @@ class Player {
       return false;
     }
   }
-
-  //COFFEE
 
   didCollide(coffee) {
     const playerRect = this.element.getBoundingClientRect();

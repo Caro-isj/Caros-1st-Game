@@ -26,20 +26,17 @@ window.onload = function () {
     }
 
     if (event.code === "KeyQ") {
-      game.player.directionX = +10;
+      game.player.directionX = -10;
       game.player.directionY = -10;
     } else if (event.code === "KeyE") {
       game.player.directionX = +10;
-      game.player.directionY = +10;
+      game.player.directionY = -10;
     }
 
     if (event.code === "Space") {
       game.player.jump();
     }
   });
-
-  /* if (event.code === "Control") {
-    game.player.jump("stop-jump");*/
 
   document.addEventListener("keyup", () => {
     game.player.directionX = 0;

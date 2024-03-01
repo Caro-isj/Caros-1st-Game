@@ -4,41 +4,80 @@
 
 ## Description
 
-Brief description of the project
+Parasomnia is a 8-bit platformer about a kitty with sleep paralysis who has been captured by evil creatures who want to keep it in the dream realm for all eternity. The objective of the game is to guide the kitty across a side-scrolling scenario, collecting coffees to achieve a high score while avoiding enemies in the way.
 
 ## MVP
 
-_MVP definition here, list of minimum features_
+- Simple game
+- 3 states (splash, game, game over)
+- Able to restart
+- JavaScript (DOM, Basic JS, Classes)
+- Win/Lose Logic
 
 ## Backlog
 
-_List of features you might implement after the MVP_
+Comparing current score with the highest one, adding more enemies, changing scenarios, adding sprites according to characters and movements, adding a timer, better styling.
 
 ## Data structure
 
-_List of classes and methods_
+Classes:
+
+- Script
+- Game
+- Player
+- Obstacles
+- Coffee
+
+Methods:
+
+- Move
+- Update Position
+- Jump
+- Enemy Collision
+- Coffee Collision
+- Start
+- Restart
+- Game Over
+- Game Update
+- Game Loop
 
 ## States y States Transitions
 
-_List of states (views) of your game_
+Splash screen, game screen, and game over screen.
 
 ## Task
 
-_List of tasks in order of priority_
+- Basic HTML structure with divs for each state and buttons
+- Simple CSS
+- Linking HTML, CSS, and JS to each other
+- Creating Game, Script, Player, and Obstacle classes with JS
+- Creating Selectors for DOM manipulation
+- Placing Player on the game screen
+- Creating Methods and Event listeners for character movement control
+- Making enemies loop
+- Collision Methods
+- Linking buttons and losing game to each state
+- Reseting score and lives at restart
+- Improving CSS
+- Adding music
 
-## Game Sources
+## Sources
 
-**Game assets**
+**Images**
 
-_sprites:_ [https://www.piskelapp.com/](https://www.piskelapp.com/)  
-_handle tiles, tilesets, tilemaps:_ [https://www.mapeditor.org/](https://www.mapeditor.org/)
-_images:_
+- https://mavink.com/
+- https://genuinehuman.tumblr.com/ - Jason Tammemagi
+- https://en.idei.club/22896-pixel-background.html
 
-- [https://kenney.nl/assets](https://kenney.nl/assets)
-- [https://craftpix.net/freebies/](https://craftpix.net/freebies/)
-- [https://mobilegamegraphics.com/product-category/all_products/freestuff/](https://mobilegamegraphics.com/product-category/all_products/
+**PSD brushes**
+
+- https://brainwash-gang.itch.io/ - "Pixel Art texturing brushes for Brainwashing"
 
 **Sounds and Music**
 
-- [http://www.noiseforfun.com/](http://www.noiseforfun.com/)
-- [https://www.playonloop.com/](https://www.playonloop.com/)
+- https://opengameart.org/ SubspaceAudio - "The Essential Retro Video Game Sound Effects Collection"
+- https://www.playonloop.com/ - "Spirit Dance", "Super Match" - Licensed under Creative Commons by Attribution 4.0
+
+**Tutorials**
+
+- https://codepen.io/ - Brandon-Stoyles - "Retro Buttons"

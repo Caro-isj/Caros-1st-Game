@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Narkes Lepsis</title>
+    <title>Parasomnia</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <h1>Parasomnia</h1>
     <div id="game-intro">
-      <img src="images/i032d91obzk81.gif" alt="" class="intro-img" />
       <br />
       <button id="start-button">Wake up!</button>
     </div>
@@ -19,23 +18,22 @@
         <h2>Stats</h2>
         <p>Score: <span id="score">0</span></p>
         <p>Lives: <span id="lives">3</span></p>
-        <p>
-          Controls: Move: WASD <br />
-          Jump: Space Bar <br />
-          Dash Up/Down: Q/E
-        </p>
+        <h2>Controls</h2>
+        <p>Move: WASD</p>
+        <p>Jump: Space Bar</p>
+        <p>Half Jump: Q/E</p>
       </div>
       <div id="game-screen"></div>
     </div>
     <div id="game-over">
+      <h1>You've fallen into eternal slumber!</h1>
+      <br />
+      <button id="restart-button">Try Again</button> <br />
       <img
-        src="../Caros-1st-Game/images/tumblr_ml120j5dPc1r1mcxco1_400.gif"
-        alt="game over"
+        src="./images/tumblr_ml120j5dPc1r1mcxco1_400c.gif"
+        alt="cat sleeping"
         class="logo-img"
       />
-      <h1>You've fallen into eternal slumber</h1>
-      <br />
-      <button id="restart-button">Restart</button>
     </div>
     <script type="text/javascript" src="./js/script.js"></script>
     <script type="text/javascript" src="./js/game.js"></script>
